@@ -7,7 +7,7 @@
     <link href="css/output.css" rel="stylesheet">
 </head>
 <body>
-    <section class = "bg-[#e4dfda] flex flex-col items-center justify-center text-center py-10 relative">
+    <section class = "bg-[#e4dfda] flex flex-col items-center justify-center text-center py-10 w-[100%] relative">
         <h1 class = "text-[#a78271] text-4xl mb-10 font-mono">Hi, I'm Aung!</h1>
 
         <div class = "relative h-72 w-72 mt-[50px] font-mono">
@@ -25,12 +25,57 @@
 
         
         <div class = "flex gap-20 mt-18">
-            <img src = "images/github.png" class = "w-10 h-10 object-contain">
-            <img src = "images/linkedin.png" class = "w-10 h-10 object-contain">
+            <a href = "https://github.com/Austinling" target = "_blank">
+                <img src = "images/github.png" class = "w-10 h-10 object-contain">
+            </a>
+
+            <a href = "https://www.linkedin.com/in/austin-aung-myat-349621386/" target = "_blank">
+                <img src = "images/linkedin.png" class = "w-10 h-10 object-contain">
+            </a>
         </div>
 
     </section>
-    
 
+    <section class = "flex flex-row justify-around w-[100%] py-10">
+
+        <div class = "w-100">
+            <h2 class = "text-center text-3xl mt-10 mb-10 font-mono text-[#a78271]">My Skills</h2>
+
+            <div class="skillDiv flex flex-col gap-10 mt-4 h-100 justify-center bg-white p-5 rounded-lg shadow-lg">
+                <template class = "templateSkills">
+                    <div class = "flex flex-row gap-6 mt-auto mb-auto">
+                        <img src="images/js.png" class="w-10 h-10 object-contain">
+                        <h4 class = "text-3xl font-mono" ></h4>
+                    </div>
+                </template>
+            </div>
+        </div>
+        
+        <div>
+            <div class = "flex flex-col gap-10 mt-4 justify-center w-100">
+                <h1 class = "text-center text-3xl font-mono text-[#a78271]">Projects</h1>
+
+                    <div class = "projectDiv flex flex-col justify-center gap-10 content-center h-100 bg-white rounded-lg shadow-lg">
+                        <template class = "projectTemplate">
+                            <div class = "flex flex-col gap-10 p-5">
+                                <div class = "mb-auto mt-auto">
+                                    <h2 class = "text-2xl font-mono">Portfolio Project</h2>
+                                </div>
+
+                                <div class = "mb-auto mt-auto flex flex-row gap-8">
+                                    <img src = "images/profileImage.jpg" class = "h-40 w-40 mx-auto">
+                                    <h1 class = "text-1xl font-mono"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+            </div>
+        </div>
+    
+    </section> 
+
+    
+    <script src = "index.js"></script>
 </body>
 </html>
