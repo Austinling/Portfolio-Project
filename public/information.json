@@ -1,0 +1,15 @@
+{
+    "skills": {
+        "HTML": "/images/html.png",
+        "CSS": "/images/css.png",
+        "JS": "/images/js.png"
+    },
+    "projects": {
+        "project1": {
+            "title": "Admin Dashboard",
+            "description": "Full-stack CRUD application featuring JWT authentication and password hashing. Built with a serverless architecture using Cloudflare Workers, D1 Database, and integrated data visualization charts.",
+            "picture": "./images/adminDashboard.png",
+            "link": "https://github.com/Austinling/adminDashboard"
+        }
+    }
+}
