@@ -43,7 +43,10 @@ export function SkillsAndProjects() {
           {Object.values(data.skills).map((project, index) => {
             return (
               <div key={index} className="flex flex-row gap-6 mt-auto mb-auto">
-                <img src={project.image} className="w-10 h-10 object-contain" />
+                <img
+                  src={`${import.meta.env.BASE_URL}${project.image}`}
+                  className="w-10 h-10 object-contain"
+                />
                 <h4 className="text-3xl font-mono flex items-center gap-3">
                   {project.name}
                   {project.libraries != null && (
@@ -62,7 +65,7 @@ export function SkillsAndProjects() {
                               >
                                 <div>{key}</div>
                                 <img
-                                  src={value}
+                                  src={`${import.meta.env.BASE_URL}${value}`}
                                   className="w-10 h-10 object-contain"
                                 />
                               </div>
@@ -100,7 +103,10 @@ export function SkillsAndProjects() {
                 </div>
 
                 <div className="mb-auto mt-auto flex flex-col md:flex-row gap-8 items-center">
-                  <img src={project.picture} className="h-40 w-70" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${project.picture}`}
+                    className="h-40 w-70"
+                  />
                   <h1 className="text-1xl font-mono flex-1">
                     {project.description}
                   </h1>
@@ -112,7 +118,7 @@ export function SkillsAndProjects() {
                       <div className="flex gap-3">
                         <img
                           className="w-10 h-10 object-contain"
-                          src={value}
+                          src={`${import.meta.env.BASE_URL}${value}`}
                         ></img>
                         <h1 className="font-mono">{key}</h1>
                       </div>
