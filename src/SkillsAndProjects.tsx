@@ -23,6 +23,8 @@ type SkillsType = {
 export function SkillsAndProjects() {
   const [data, setData] = useState<SkillsType | null>(null);
 
+  const baseUrl = import.meta.env.BASE_URL;
+
   useEffect(() => {
     fetch("./information.json")
       .then((information) => information.json())
@@ -44,7 +46,7 @@ export function SkillsAndProjects() {
             return (
               <div key={index} className="flex flex-row gap-6 mt-auto mb-auto">
                 <img
-                  src={`${import.meta.env.BASE_URL}${project.image}`}
+                  src={`${baseUrl}${project.image}`}
                   className="w-10 h-10 object-contain"
                 />
                 <h4 className="text-3xl font-mono flex items-center gap-3">
@@ -65,7 +67,7 @@ export function SkillsAndProjects() {
                               >
                                 <div>{key}</div>
                                 <img
-                                  src={`${import.meta.env.BASE_URL}${value}`}
+                                  src={`${baseUrl}${value}`}
                                   className="w-10 h-10 object-contain"
                                 />
                               </div>
@@ -104,7 +106,7 @@ export function SkillsAndProjects() {
 
                 <div className="mb-auto mt-auto flex flex-col md:flex-row gap-8 items-center">
                   <img
-                    src={`${import.meta.env.BASE_URL}${project.picture}`}
+                    src={`${baseUrl}${project.picture}`}
                     className="h-40 w-70"
                   />
                   <h1 className="text-1xl font-mono flex-1">
@@ -118,7 +120,7 @@ export function SkillsAndProjects() {
                       <div className="flex gap-3">
                         <img
                           className="w-10 h-10 object-contain"
-                          src={`${import.meta.env.BASE_URL}${value}`}
+                          src={`${baseUrl}${value}`}
                         ></img>
                         <h1 className="font-mono">{key}</h1>
                       </div>
