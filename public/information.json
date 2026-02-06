@@ -2,25 +2,25 @@
     "skills": {
         "language1": {
             "name": "HTML",
-            "image": "/images/html.png"
+            "image": "images/html.png"
         },
         "language2": {
             "name": "CSS",
-            "image": "/images/css.png",
+            "image": "images/css.png",
             "libraries": {
-                "Tailwind": "/images/tailwind.png"
+                "Tailwind": "images/tailwind.png"
             }
 
         },
         "language3": {
             "name": "Javascript",
-            "image": "/images/js.png"
+            "image": "images/js.png"
         },
         "language4": {
             "name": "TypeScript",
-            "image": "/images/typescript.png",
+            "image": "images/typescript.png",
             "libraries": {
-                "React": "/images/react.png"
+                "React": "images/react.png"
             }
         }
     },
@@ -31,9 +31,9 @@
             "picture": "./images/adminDashboard.png",
             "link": "https://github.com/Austinling/adminDashboard",
             "technologies":{
-                "D1 (SQLite) Database": "/images/d1.png",
-                "Cloudflare Worker": "/images/worker.png",
-                "Cloudflare Pages": "/images/pages.png"
+                "D1 (SQLite) Database": "images/d1.png",
+                "Cloudflare Worker": "images/worker.png",
+                "Cloudflare Pages": "images/pages.png"
             }
         }
     }
