@@ -17,3 +17,16 @@ body{
 .spinSlow{
     animation:spinSlow 10s linear infinite;
 }
+
+@theme {
+  --animate-right: right 1s ease-in-out infinite;
+  @keyframes right {
+    0%,
+    100% {
+      transform: translateX(0)
+    }
+    50% {
+      transform: translateX(50%)
+    }
+  }
+}
