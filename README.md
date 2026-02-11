@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# 🚀 Portfolio | Aung Myat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Built with **React**, **Vite**, and **Tailwind CSS**. This project serves as a central hub for my work, featuring dynamic data loading and custom CSS animations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## React Compiler
+- **Framework:** React (TypeScript)
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Data:** JSON
+- **Hosting:** GitHub Pages
+- **Backend (Projects):** Cloudflare Workers & D1 Database
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Dynamic Data Rendering:** Project and skill information is managed via a central JSON file for easy updates without touching the UI logic.
+* **Custom Hover Effects:** Interactive UI elements using Tailwind `group-hover` and custom keyframe animations.
+* **Responsive Design:** Mobile-first approach ensuring a seamless experience across all devices.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Featured Project: Admin Dashboard
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+One of the core projects highlighted in this portfolio is my **Full-Stack Admin Dashboard**:
+- **Architecture:** Serverless backend using Cloudflare Workers.
+- **Database:** Structured data storage with Cloudflare D1 (SQLite).
+- **Security:** Implements JWT authentication and secure password hashing.
+- **Visualization:** Integrated charts for real-time data monitoring.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To run this project locally:
+
+1. **Clone the repo:**
+   
+   git clone https://github.com/Austinling/Portfolio-Project.git
+
+2. **Install Dependencies**
+   
+   npm install
+   
+3. **Run development server:**
+
+   npm run dev
+
+## 📃 Note: Change the base to your repository name in the vite.config.ts file
