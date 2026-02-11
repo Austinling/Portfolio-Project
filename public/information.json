@@ -31,9 +31,24 @@
             "picture": "./images/adminDashboard.png",
             "link": "https://github.com/Austinling/adminDashboard",
             "technologies":{
+                "React": "images/react.png",
+                "Tailwind CSS": "images/tailwind.png",
                 "D1 (SQLite) Database": "images/d1.png",
                 "Cloudflare Worker": "images/worker.png",
                 "Cloudflare Pages": "images/pages.png"
+            }
+        },
+        "project2": {
+            "title": "Multiplayer AI Chatroom",
+            "description": "Real-time collaborative AI platform built in 24 hours. Features synchronized WebSocket states for user presence and 'typing' indicators, integrated with FastAPI and Supabase for live data streaming and chat persistence.",
+            "picture": "./images/odysseychat.jpg",
+            "link": "https://github.com/Austinling/HackSheffield",
+            "technologies": {
+                "React": "images/react.png",
+                "FastAPI": "images/fastapi.png",
+                "Supabase": "images/supabase.png",
+                "Tailwind CSS": "images/tailwind.png",
+                "GPT-4o": "images/gpt.png"
             }
         }
     }

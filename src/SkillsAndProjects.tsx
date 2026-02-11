@@ -114,7 +114,7 @@ export function SkillsAndProjects() {
                   </h1>
                 </div>
 
-                <div className="flex">
+                <div className="grid grid-cols-3 gap-10">
                   {Object.entries(project.technologies).map(([key, value]) => {
                     return (
                       <div className="flex gap-3">
