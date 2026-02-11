@@ -41,7 +41,7 @@ export function SkillsAndProjects() {
           My Skills
         </h2>
 
-        <div className="skillDiv flex flex-col gap-10 mt-4 h-100 justify-center bg-white p-5 rounded-lg shadow-lg">
+        <div className="skillDiv flex flex-col gap-10 mt-4 justify-center bg-white p-5 rounded-lg shadow-lg">
           {Object.values(data.skills).map((project, index) => {
             return (
               <div key={index} className="flex flex-row gap-6 mt-auto mb-auto">

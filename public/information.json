@@ -22,6 +22,14 @@
             "libraries": {
                 "React": "images/react.png"
             }
+        },
+        "language5": {
+            "name": "Github Actions",
+            "image": "images/github.png"
+        },
+        "language6": {
+            "name": "Git",
+            "image": "images/git.png"
         }
     },
     "projects": {
