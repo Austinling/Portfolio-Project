@@ -1,0 +1,85 @@
+{
+    "languages": {
+        "language1": {
+            "name": "HTML",
+            "image": "images/html.png"
+        },
+        "language2": {
+            "name": "CSS",
+            "image": "images/css.png"
+
+        },
+        "language3": {
+            "name": "Javascript",
+            "image": "images/js.png"
+        },
+        "language4": {
+            "name": "TypeScript",
+            "image": "images/typescript.png"
+        },
+        "language5": {
+            "name": "SQL",
+            "image": "images/sql.png"
+        }
+    },
+    "libraries": {
+        "library1":{
+            "name": "React",
+            "image": "images/react.png"
+        },
+        "library2":{
+            "name": "Tailwind CSS",
+            "image": "images/tailwind.png"
+        }
+    },
+    "tools": {
+        "tool1": {
+            "name": "Git",
+            "image": "images/git.png"
+        },
+        "tool2": {
+            "name": "GitHub Actions",
+            "image": "images/github.png"
+        },
+        "tool3": {
+            "name": "GitHub Pages",
+            "image": "images/pages.png"
+        },
+        "tool4": {
+            "name": "D1 SQLite",
+            "image": "images/d1.png"
+        },
+        "tool5": {
+            "name": "Cloudflare Pages",
+            "image": "images/cloudflare.png"
+        }
+    },
+    "projects": {
+        "project1": {
+            "title": "Admin Dashboard",
+            "description": "Full-stack CRUD application featuring JWT authentication and password hashing. Built with a serverless architecture using Cloudflare Workers, D1 Database, and integrated data visualization charts.",
+            "picture": "./images/adminDashboard.png",
+            "link": "https://github.com/Austinling/adminDashboard",
+            "technologies":{
+                "React": "images/react.png",
+                "Tailwind CSS": "images/tailwind.png",
+                "D1 (SQLite) Database": "images/d1.png",
+                "Cloudflare Worker": "images/worker.png",
+                "Cloudflare Pages": "images/pages.png"
+            }
+        },
+        "project2": {
+            "title": "Multiplayer AI Chatroom",
+            "description": "Real-time collaborative AI platform built in 24 hours. Features synchronized WebSocket states for user presence and 'typing' indicators, integrated with FastAPI and Supabase for live data streaming and chat persistence.",
+            "picture": "./images/odysseychat.jpg",
+            "link": "https://github.com/Austinling/HackSheffield",
+            "technologies": {
+                "React": "images/react.png",
+                "FastAPI": "images/fastapi.png",
+                "Supabase": "images/supabase.png",
+                "Tailwind CSS": "images/tailwind.png",
+                "GPT-4o": "images/gpt.png"
+            }
+        }
+    }
+}

@@ -125,7 +125,7 @@ function makeDithered(imageData: ImageData, factor: number) {
 }
 
 export function ImageDithering() {
-  const [pagodaImage, status] = useImage("/pagoda.png", "anonymous");
+  const [pagodaImage, status] = useImage("/images/pagoda.png", "anonymous");
 
   const [dots, setDots] = useState<
     {
@@ -232,9 +232,17 @@ export function ImageDithering() {
           scaleY={finalScale}
           x={(window.innerWidth - imageWidth * finalScale) / 2}
           y={0}
+          listening={false}
         >
           {dots.map((dot, i) => (
-            <Circle key={i} x={dot.x} y={dot.y} radius={1} fill={dot.color} />
+            <Circle
+              listening={false}
+              key={i}
+              x={dot.x}
+              y={dot.y}
+              radius={1}
+              fill={dot.color}
+            />
           ))}
         </Group>
       </Layer>
