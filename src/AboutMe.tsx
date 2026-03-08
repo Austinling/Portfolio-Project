@@ -1,9 +1,11 @@
 import useImage from "use-image";
 
 export function AboutMe() {
-  const [github, githubstatus] = useImage("/images/githubbg.png");
-  const [linkedin, linkedinstatus] = useImage("/images/linkedin.png");
-  const [resume] = useImage("/images/resume.png");
+  const baseUrl = import.meta.env.BASE_URL;
+
+  const [github, githubstatus] = useImage(`${baseUrl}/images/githubbg.png`);
+  const [linkedin, linkedinstatus] = useImage(`${baseUrl}/images/linkedin.png`);
+  const [resume] = useImage(`${baseUrl}/images/resume.png`);
 
   if (githubstatus !== "loaded" || linkedinstatus !== "loaded") return;
 

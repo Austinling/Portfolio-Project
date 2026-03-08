@@ -133,7 +133,9 @@ export function ImageDithering({
   imageRef: string;
   scale: number;
 }) {
-  const [pagodaImage, status] = useImage(`${imageRef}`, "anonymous");
+  const baseUrl = import.meta.env.BASE_URL;
+
+  const [pagodaImage, status] = useImage(`${baseUrl}${imageRef}`, "anonymous");
 
   const [dots, setDots] = useState<
     {
