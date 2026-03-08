@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { ImageDithering } from "./ImageDithering";
 import { Navbar } from "./Navbar";
-import { Title } from "./Title";
 import { TechStack } from "./TechStack";
 import { Projects } from "./Projects";
 import { AboutMe } from "./AboutMe";

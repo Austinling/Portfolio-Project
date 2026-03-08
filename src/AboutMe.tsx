@@ -3,7 +3,7 @@ import useImage from "use-image";
 export function AboutMe() {
   const [github, githubstatus] = useImage("/images/githubbg.png");
   const [linkedin, linkedinstatus] = useImage("/images/linkedin.png");
-  const [resume, resumestatus] = useImage("/images/resume.png");
+  const [resume] = useImage("/images/resume.png");
 
   if (githubstatus !== "loaded" || linkedinstatus !== "loaded") return;
 
