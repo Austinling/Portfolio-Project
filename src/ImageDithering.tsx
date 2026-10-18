@@ -232,7 +232,7 @@ export function ImageDithering({
 
         ctx.beginPath();
         ctx.fillStyle = dot.color;
-        ctx.arc(dot.x, dot.y, 3, 0, 2 * Math.PI);
+        ctx.arc(dot.x, dot.y, 1, 0, 2 * Math.PI);
         ctx.fill();
       }
 

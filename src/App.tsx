@@ -11,9 +11,11 @@ function App() {
       <Navbar />
       <main>
         <div id="start" className="scroll-mt-28" />
-        <Title />
-        <div className="flex w-full" aria-hidden="true">
+        <div className="relative" aria-hidden="true">
           <ImageDithering imageRef="/images/pagoda.png" scale={1} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Title />
+          </div>
         </div>
         <div className="flex flex-col gap-28">
           <AboutMe />
