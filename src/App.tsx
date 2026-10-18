@@ -12,7 +12,7 @@ function App() {
       <main>
         <div id="start" className="scroll-mt-28" />
         <div className="relative" aria-hidden="true">
-          <ImageDithering imageRef="/images/pagoda.png" scale={1} />
+          <ImageDithering imageRef="/images/pagoda.png" />
           <div className="absolute inset-0 flex items-center justify-center">
             <Title />
           </div>

@@ -15,80 +15,42 @@ export function TechStack() {
 
   if (!data) return;
 
+  const sections = [
+    { title: "Languages", items: Object.values(data.languages), layout: "sm:grid-cols-2 lg:grid-cols-4" },
+    { title: "Libraries", items: Object.values(data.libraries), layout: "sm:grid-cols-2" },
+    { title: "Tools", items: Object.values(data.tools), layout: "sm:grid-cols-2" },
+  ];
+
   return (
-    <section id="techstack" className="relative scroll-mt-28 text-center text-white">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 justify-center gap-10 p-5 bitcount-single-bits text-4xl md:grid-cols-2 lg:grid-cols-3">
-      <div className="flex flex-col gap-5 items-center">
-        <h1>Languages</h1>
-        <div className="border-b-2 border-dotted w-70"></div>
-
-        <div className="text-2xl">
-          {Object.values(data.languages).map((language, index) => {
-            return (
-              <div
-                key={`${index}+${language}`}
-                className="flex items-center justify-center p-5 gap-10"
-              >
-                <img
-                  src={`${baseUrl}${language.image}`}
-                  className="w-10 h-10 object-contain"
-                  alt=""
-                  loading="lazy"
-                />
-                <h3> {language.name}</h3>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-5 items-center">
-        <h1>Libraries</h1>
-        <div className="border-b-2 border-dotted w-70"></div>
-
-        <div className="text-2xl">
-          {Object.values(data.libraries).map((library, index) => {
-            return (
-              <div
-                key={`${index}+${library}`}
-                className="flex items-center justify-center p-5 gap-10"
-              >
-                <img
-                  src={`${baseUrl}${library.image}`}
-                  className="w-10 h-10 object-contain"
-                  alt=""
-                  loading="lazy"
-                />
-                <h3> {library.name}</h3>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-5 items-center lg:col-span-1 md:col-span-2 sm-col-span1">
-        <h1>Tools</h1>
-        <div className="border-b-2 border-dotted w-70"></div>
-
-        <div className="text-2xl">
-          {Object.values(data.tools).map((tool, index) => {
-            return (
-              <div
-                key={`${index}+${tool}`}
-                className="flex items-center justify-center p-5 gap-10"
-              >
-                <img
-                  src={`${baseUrl}${tool.image}`}
-                  className="w-10 h-10 object-contain"
-                  alt=""
-                  loading="lazy"
-                />
-                <h3> {tool.name}</h3>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+    <section id="techstack" className="relative scroll-mt-28 px-5 text-white">
+      <div className="mx-auto grid w-full max-w-6xl gap-5 bitcount-single-bits md:grid-cols-2">
+        {sections.map((section, index) => (
+          <div
+            key={section.title}
+            className={`rounded-lg border border-white/20 bg-white/5 p-5 backdrop-blur-sm ${
+              index === 0 ? "md:col-span-2" : ""
+            }`}
+          >
+            <h2 className="text-center text-3xl">{section.title}</h2>
+            <div className="mx-auto my-4 w-24 border-b-2 border-dotted border-white/60" />
+            <div className={`grid grid-cols-1 gap-3 ${section.layout}`}>
+              {section.items.map((item) => (
+                <div
+                  key={item.name}
+                  className="flex min-h-16 items-center gap-4 rounded-md border border-white/10 px-4 py-3 transition hover:border-white/40 hover:bg-white/10"
+                >
+                  <img
+                    src={`${baseUrl}${item.image}`}
+                    className="h-9 w-9 shrink-0 object-contain"
+                    alt=""
+                    loading="lazy"
+                  />
+                  <h3 className="text-xl leading-tight">{item.name}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

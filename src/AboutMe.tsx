@@ -9,7 +9,7 @@ export function AboutMe() {
 
   return (
     <section id="about" className="relative scroll-mt-28">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 p-5 md:grid-cols-2 md:items-center">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 p-5 lg:grid-cols-2 lg:items-center">
         <img
           className="mx-auto w-full max-w-md rounded border border-white/20 object-cover"
           src={`${baseUrl}/images/profileImage.jpg`}

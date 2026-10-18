@@ -1,39 +1,46 @@
 {
     "languages": {
         "language1": {
-            "name": "HTML",
-            "image": "images/html.png"
+            "name": "Java",
+            "image": "images/java.png"
         },
         "language2": {
-            "name": "CSS",
-            "image": "images/css.png"
-
+            "name": "TypeScript",
+            "image": "images/typescript.png"
         },
         "language3": {
             "name": "Javascript",
             "image": "images/js.png"
         },
         "language4": {
-            "name": "TypeScript",
-            "image": "images/typescript.png"
+            "name": "Python",
+            "image": "images/python.png"
         },
-        "language5":{
-            "name": "Java",
-            "image": "images/java.png"
+        "language5": {
+            "name": "HTML",
+            "image": "images/html.png"
         },
         "language6": {
+            "name": "CSS",
+            "image": "images/css.png"
+        },
+        "language7": {
             "name": "SQL",
             "image": "images/sql.png"
         }
     },
     "libraries": {
-        "library1":{
+        "library1": {
             "name": "React",
             "image": "images/react.png"
         },
-        "library2":{
+        "library2": {
             "name": "Tailwind CSS",
             "image": "images/tailwind.png"
+        },
+        "library3": {
+            "name": "SpringBoot",
+            "image": "images/springboot.png"
         }
     },
     "tools": {
@@ -42,20 +49,8 @@
             "image": "images/git.png"
         },
         "tool2": {
-            "name": "GitHub Actions",
+            "name": "CI/CD",
             "image": "images/github.png"
-        },
-        "tool3": {
-            "name": "GitHub Pages",
-            "image": "images/pages.png"
-        },
-        "tool4": {
-            "name": "D1 SQLite",
-            "image": "images/d1.png"
-        },
-        "tool5": {
-            "name": "Cloudflare Pages",
-            "image": "images/cloudflare.png"
         }
     },
     "projects": {

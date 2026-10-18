@@ -132,10 +132,8 @@ function makeDithered(imageData: ImageData, factor: number) {
 
 export function ImageDithering({
   imageRef,
-  scale,
 }: {
   imageRef: string;
-  scale: number;
 }) {
   const baseUrl = import.meta.env.BASE_URL;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -154,7 +152,10 @@ export function ImageDithering({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  }, []);
+
+  const responsiveScale =
+    windowWidth > 1200 ? 0.7 : windowWidth > 1000 ? 0.9 : 1;
 
   useEffect(() => {
     if (status == "loaded" && pagodaImage) {
@@ -175,9 +176,9 @@ export function ImageDithering({
         const skipPoints = 3;
 
         const imageWidth = pagodaImage.width;
-        const finalScale = (window.innerWidth * scale) / imageWidth;
+        const finalScale = (windowWidth * responsiveScale) / imageWidth;
         const xOffset =
-          (window.innerWidth - pagodaImage.width * finalScale) / 2;
+          (windowWidth - pagodaImage.width * finalScale) / 2;
 
         for (let y = 0; y < imageData.height; y += skipPoints) {
           for (let x = 0; x < imageData.width; x += skipPoints) {
@@ -205,7 +206,7 @@ export function ImageDithering({
         dotsRef.current = points;
       }
     }
-  }, [status, pagodaImage, windowWidth, scale]);
+  }, [status, pagodaImage, windowWidth, responsiveScale]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -248,24 +249,16 @@ export function ImageDithering({
 
   const imageHeight = pagodaImage?.height || 1000;
 
-  if (window.innerWidth > 1200) {
-    scale = 0.7;
-  } else if (window.innerWidth > 1000) {
-    scale = 0.9;
-  } else {
-    scale = 1;
-  }
-
   const imageWidth = pagodaImage?.width || 1000;
-  const finalScale = (window.innerWidth * scale) / imageWidth;
+  const finalScale = (windowWidth * responsiveScale) / imageWidth;
   const renderedImageHeight = imageHeight * finalScale;
-  const isPhoneScreen = window.innerWidth < 900;
+  const isPhoneScreen = windowWidth < 900;
   const stageHeight = isPhoneScreen
     ? renderedImageHeight
     : Math.max(window.innerHeight, renderedImageHeight);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div
         style={{
           width: "100vw",
