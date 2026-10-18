@@ -5,7 +5,7 @@ export function Title() {
   const [secondText, showSecondText] = useState(false);
 
   return (
-    <div className="flex items-center justify-center mt-20 mb-10 text-center flex-col gap-10 px-5">
+    <section className="flex min-h-[45vh] items-center justify-center gap-8 px-5 py-20 text-center flex-col">
       <TypeWriter
         text="Hi! I'm Austin"
         textSize={"text-5xl"}
@@ -19,6 +19,14 @@ export function Title() {
           speed={20}
         ></TypeWriter>
       )}
-    </div>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href="#projects" className="rounded border border-white px-5 py-3 text-white hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400">
+          View projects
+        </a>
+        <a href={`${import.meta.env.BASE_URL}resume.pdf`} download className="rounded border border-white/50 px-5 py-3 text-white hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400">
+          Download CV
+        </a>
+      </div>
+    </section>
   );
 }

@@ -1,15 +1,19 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useImage from "use-image";
-import { Circle, Layer, Stage, Group } from "react-konva";
-import { Html } from "react-konva-utils";
-import Konva from "konva";
-import { Title } from "./Title";
 
 type Color = {
   r: number;
   g: number;
   b: number;
   a: number;
+};
+
+type Dot = {
+  x: number;
+  y: number;
+  targetX: number;
+  targetY: number;
+  color: string;
 };
 
 function getNewColor(factor: number, rgbValue: number): number {
@@ -99,16 +103,16 @@ function doAllErrors(
 function makeDithered(imageData: ImageData, factor: number) {
   for (let y = 0; y < imageData.height; y++) {
     for (let x = 0; x < imageData.width; x++) {
-      let imageIndex = getImageIndex(imageData, x, y);
+      const imageIndex = getImageIndex(imageData, x, y);
 
-      let colorObject: Color = getColorAtIndex(imageData, imageIndex);
+      const colorObject: Color = getColorAtIndex(imageData, imageIndex);
 
-      let oldR = colorObject.r;
-      let oldG = colorObject.g;
-      let oldB = colorObject.b;
-      let newR = getNewColor(factor, oldR);
-      let newG = getNewColor(factor, oldG);
-      let newB = getNewColor(factor, oldB);
+      const oldR = colorObject.r;
+      const oldG = colorObject.g;
+      const oldB = colorObject.b;
+      const newR = getNewColor(factor, oldR);
+      const newG = getNewColor(factor, oldG);
+      const newB = getNewColor(factor, oldB);
 
       setColorAtIndex(imageData, imageIndex, {
         r: newR,
@@ -117,9 +121,9 @@ function makeDithered(imageData: ImageData, factor: number) {
         a: colorObject.a,
       });
 
-      let errR = oldR - newR;
-      let errG = oldG - newG;
-      let errB = oldB - newB;
+      const errR = oldR - newR;
+      const errG = oldG - newG;
+      const errB = oldB - newB;
 
       doAllErrors(imageData, x, y, errR, errG, errB);
     }
@@ -134,20 +138,23 @@ export function ImageDithering({
   scale: number;
 }) {
   const baseUrl = import.meta.env.BASE_URL;
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [pagodaImage, status] = useImage(`${baseUrl}${imageRef}`, "anonymous");
 
-  const [dots, setDots] = useState<
-    {
-      x: number;
-      y: number;
-      targetX: number;
-      targetY: number;
-      color: string;
-    }[]
-  >([]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const dotsRef = useRef<Dot[]>([]);
 
-  const groupRef = useRef<Konva.Group>(null);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   useEffect(() => {
     if (status == "loaded" && pagodaImage) {
@@ -164,8 +171,13 @@ export function ImageDithering({
 
         makeDithered(imageData, 4);
 
-        let points = [];
+        const points = [];
         const skipPoints = 3;
+
+        const imageWidth = pagodaImage.width;
+        const finalScale = (window.innerWidth * scale) / imageWidth;
+        const xOffset =
+          (window.innerWidth - pagodaImage.width * finalScale) / 2;
 
         for (let y = 0; y < imageData.height; y += skipPoints) {
           for (let x = 0; x < imageData.width; x += skipPoints) {
@@ -182,48 +194,57 @@ export function ImageDithering({
               points.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                targetX: x,
-                targetY: y,
+                targetX: x * finalScale + xOffset,
+                targetY: y * finalScale,
                 color: `rgb(${color.r},${color.g},${color.b})`,
               });
             }
           }
         }
 
-        setDots(points);
+        dotsRef.current = points;
       }
     }
-  }, [status, pagodaImage]);
+  }, [status, pagodaImage, windowWidth, scale]);
 
   useEffect(() => {
-    const animation = new Konva.Animation(() => {
-      if (!groupRef.current || dots.length === 0) return;
+    const canvas = canvasRef.current;
 
-      const children = groupRef.current?.getChildren();
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const dots = dotsRef.current;
 
-      for (let i = 0; i < children.length; i++) {
-        const node = children[i];
-        const point = dots[i];
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < dots.length; i++) {
+        const dot = dots[i];
 
-        const dx = point.targetX - node.x();
-        const dy = point.targetY - node.y();
+        const dx = dot.targetX - dot.x;
+        const dy = dot.targetY - dot.y;
 
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance > 1) {
-          node.x(node.x() + dx * 0.05);
-          node.y(node.y() + dy * 0.05);
-        } else {
+          dot.x = dot.x + dx * 0.05;
+          dot.y = dot.y + dy * 0.05;
         }
-      }
-    });
 
-    animation.start();
+        ctx.beginPath();
+        ctx.fillStyle = dot.color;
+        ctx.arc(dot.x, dot.y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(render);
+    };
+
+    const animationId = requestAnimationFrame(render);
 
     return () => {
-      animation.stop();
+      cancelAnimationFrame(animationId);
     };
-  }, [dots]);
+  }, [pagodaImage, windowWidth]);
 
   const imageHeight = pagodaImage?.height || 1000;
 
@@ -244,42 +265,23 @@ export function ImageDithering({
     : Math.max(window.innerHeight, renderedImageHeight);
 
   return (
-    <Stage width={window.innerWidth} height={stageHeight} listening={false}>
-      <Layer>
-        <Html
-          divProps={{
-            style: {
-              width: "100vw",
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              pointerEvents: "none",
-            },
-          }}
-        >
-          {" "}
-          <Title />
-        </Html>
-        <Group
-          ref={groupRef}
-          scaleX={finalScale}
-          scaleY={finalScale}
-          x={(window.innerWidth - imageWidth * finalScale) / 2}
-          y={0}
-          listening={false}
-        >
-          {dots.map((dot, i) => (
-            <Circle
-              listening={false}
-              key={i}
-              x={dot.x}
-              y={dot.y}
-              radius={1}
-              fill={dot.color}
-            />
-          ))}
-        </Group>
-      </Layer>
-    </Stage>
+    <div>
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          pointerEvents: "none",
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          width={window.innerWidth}
+          height={stageHeight}
+          style={{ display: "block" }}
+        />
+      </div>
+    </div>
   );
 }

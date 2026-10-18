@@ -7,17 +7,17 @@ export function TechStack() {
   const baseUrl = import.meta.env.BASE_URL;
 
   useEffect(() => {
-    fetch("./information.json")
+    fetch(`${import.meta.env.BASE_URL}information.json`)
       .then((information) => information.json())
       .then((data) => setData(data))
-      .catch((error) => console.log(error));
+      .catch((error) => console.error("Unable to load technical skills", error));
   }, []);
 
   if (!data) return;
 
   return (
-    <div className="relative grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 text-center justify-center bitcount-single-bits gap-10 text-4xl text-white">
-      <div id="teckstack" className="absolute -top-25"></div>
+    <section id="techstack" className="relative scroll-mt-28 text-center text-white">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 justify-center gap-10 p-5 bitcount-single-bits text-4xl md:grid-cols-2 lg:grid-cols-3">
       <div className="flex flex-col gap-5 items-center">
         <h1>Languages</h1>
         <div className="border-b-2 border-dotted w-70"></div>
@@ -32,6 +32,8 @@ export function TechStack() {
                 <img
                   src={`${baseUrl}${language.image}`}
                   className="w-10 h-10 object-contain"
+                  alt=""
+                  loading="lazy"
                 />
                 <h3> {language.name}</h3>
               </div>
@@ -54,6 +56,8 @@ export function TechStack() {
                 <img
                   src={`${baseUrl}${library.image}`}
                   className="w-10 h-10 object-contain"
+                  alt=""
+                  loading="lazy"
                 />
                 <h3> {library.name}</h3>
               </div>
@@ -76,6 +80,8 @@ export function TechStack() {
                 <img
                   src={`${baseUrl}${tool.image}`}
                   className="w-10 h-10 object-contain"
+                  alt=""
+                  loading="lazy"
                 />
                 <h3> {tool.name}</h3>
               </div>
@@ -83,6 +89,7 @@ export function TechStack() {
           })}
         </div>
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
